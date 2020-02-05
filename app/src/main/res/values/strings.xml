@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SithTranslator</string>
+
+
+    <string name="title">Sith Translator</string>
+    <string name="placeholder">Enter English Here</string>
+    <string name="translate">Translate</string>
+    <string name="sith">Sith Translation Here</string>
+
+</resources>
