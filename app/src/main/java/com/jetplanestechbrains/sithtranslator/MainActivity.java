@@ -1,6 +1,8 @@
 package com.jetplanestechbrains.sithtranslator;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,27 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
             // When the translate button is clicked, call API and update text with the translation
             SithTranslatorRequest request = new SithTranslatorRequest(englishText.getText().toString(), MainActivity.this);
             request.execute();
+        });
+
+        englishText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                translateButton.setEnabled(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.toString().trim().length()==0){
+                    translateButton.setEnabled(false);
+                } else {
+                    translateButton.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Do nothing, default method
+            }
         });
     }
 
